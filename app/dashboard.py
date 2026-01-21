@@ -10,6 +10,11 @@ st.write("This dashboard shows supplier performance, risk scoring and delay pred
 # Load dataset
 df = pd.read_csv("dataset/orders.csv")
 
+# Supplier Master Data
+suppliers = pd.read_csv("dataset/suppliers.csv")
+st.subheader("🏢 Supplier Master Data")
+st.dataframe(suppliers)
+
 # Load supplier risk report
 risk_report = pd.read_csv("dataset/supplier_risk_report.csv")
 

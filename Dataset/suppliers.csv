@@ -1,0 +1,31 @@
+supplier_id,supplier_name,category,location,contact_email,contact_phone,contract_type,base_rating,performance_tier,sla_delivery_days,defect_tolerance,max_monthly_capacity,avg_unit_cost,preferred_shipping_mode,on_time_rate_percent,reliability_score,risk_tier,active_status
+S01,Alpha Industrial Supplies,Electrical,Pune,alpha@suppliers.com,9000011111,Annual,4.6,Gold,5,0.03,12000,98,Road,94,88,Low,Active
+S02,Beta Manufacturing Co,Mechanical,Mumbai,beta@suppliers.com,9000022222,Quarterly,4.2,Silver,7,0.04,9000,105,Road,89,82,Medium,Active
+S03,Gamma Traders,RawMaterial,Delhi,gamma@suppliers.com,9000033333,Annual,3.8,Bronze,10,0.06,15000,75,Rail,78,68,High,Active
+S04,Delta Components,Electronics,Bengaluru,delta@suppliers.com,9000044444,Monthly,4.7,Gold,4,0.02,8000,120,Air,96,92,Low,Active
+S05,Epsilon Metals,Metals,Ahmedabad,epsilon@suppliers.com,9000055555,Annual,3.5,Bronze,12,0.07,20000,65,Road,72,60,High,Active
+S06,Zeta Logistics Partners,Logistics,Chennai,zeta@suppliers.com,9000066666,Quarterly,4.3,Silver,6,0.04,25000,40,Road,88,80,Medium,Active
+S07,Eta Packaging,Packaging,Hyderabad,eta@suppliers.com,9000077777,Monthly,4.0,Silver,7,0.05,18000,25,Road,84,76,Medium,Active
+S08,Theta Tech Parts,Electronics,Kolkata,theta@suppliers.com,9000088888,Quarterly,4.4,Gold,5,0.03,9500,115,Air,92,86,Low,Active
+S09,Iota Chemicals,Chemicals,Surat,iota@suppliers.com,9000099999,Annual,3.3,Bronze,11,0.08,14000,55,Road,70,58,High,Active
+S10,Kappa Global Vendors,MRO,Jaipur,kappa@suppliers.com,9000101010,Monthly,4.1,Silver,8,0.05,11000,85,Road,83,74,Medium,Active
+S11,Lambda Precision Works,Mechanical,Nashik,lambda@suppliers.com,9000111111,Annual,4.5,Gold,5,0.03,10000,110,Road,93,87,Low,Active
+S12,Mu Steel Traders,Metals,Nagpur,mu@suppliers.com,9000121212,Quarterly,3.9,Silver,9,0.06,22000,70,Rail,80,70,Medium,Active
+S13,Nu Electrical Hub,Electrical,Indore,nu@suppliers.com,9000131313,Monthly,4.2,Silver,7,0.04,13000,95,Road,86,78,Medium,Active
+S14,Xi Electronics Pvt Ltd,Electronics,Noida,xi@suppliers.com,9000141414,Annual,4.6,Gold,4,0.02,8500,125,Air,95,91,Low,Active
+S15,Omicron Packaging House,Packaging,Lucknow,omicron@suppliers.com,9000151515,Quarterly,3.7,Bronze,10,0.06,16000,28,Road,76,66,High,Active
+S16,Pi Chemical Suppliers,Chemicals,Vadodara,pi@suppliers.com,9000161616,Annual,3.6,Bronze,12,0.09,12000,58,Road,68,55,High,Active
+S17,Rho Raw Materials,RawMaterial,Bhopal,rho@suppliers.com,9000171717,Quarterly,4.0,Silver,8,0.05,17000,78,Rail,82,73,Medium,Active
+S18,Sigma Auto Components,Mechanical,Pune,sigma@suppliers.com,9000181818,Monthly,4.4,Gold,6,0.03,9000,108,Road,90,84,Low,Active
+S19,Tau Industrial Tools,MRO,Chandigarh,tau@suppliers.com,9000191919,Quarterly,4.1,Silver,9,0.05,10000,88,Road,81,72,Medium,Active
+S20,Upsilon Smart Logistics,Logistics,Mumbai,upsilon@suppliers.com,9000202020,Monthly,4.2,Silver,6,0.04,26000,42,Road,87,79,Medium,Active
+S21,Phoenix Electronics Hub,Electronics,Chennai,phoenix@suppliers.com,9000212121,Annual,4.5,Gold,5,0.03,9200,118,Air,93,88,Low,Active
+S22,Orion Metal Works,Metals,Rajkot,orion@suppliers.com,9000222222,Quarterly,3.8,Silver,10,0.06,21000,68,Road,79,69,Medium,Active
+S23,Astra Packaging Solutions,Packaging,Coimbatore,astra@suppliers.com,9000232323,Monthly,4.3,Silver,7,0.04,19000,26,Road,85,77,Medium,Active
+S24,Zenith Chemicals,Chemicals,Kanpur,zenith@suppliers.com,9000242424,Annual,3.4,Bronze,13,0.10,11000,52,Road,66,52,High,Active
+S25,Vertex Electrical Systems,Electrical,Bengaluru,vertex@suppliers.com,9000252525,Quarterly,4.4,Gold,6,0.03,12500,100,Road,91,85,Low,Active
+S26,Helios Raw Supply,RawMaterial,Patna,helios@suppliers.com,9000262626,Annual,3.6,Bronze,12,0.08,16000,72,Rail,71,59,High,Active
+S27,Nova MRO Distributors,MRO,Delhi,nova@suppliers.com,9000272727,Monthly,4.0,Silver,9,0.05,10500,86,Road,82,73,Medium,Active
+S28,Atlas Mechanical Parts,Mechanical,Ahmedabad,atlas@suppliers.com,9000282828,Quarterly,4.2,Silver,8,0.04,9800,107,Road,86,79,Medium,Active
+S29,Prime Logistics Express,Logistics,Hyderabad,prime@suppliers.com,9000292929,Annual,4.6,Gold,5,0.03,28000,45,Road,94,89,Low,Active
+S30,Evergreen Electronics,Electronics,Pune,evergreen@suppliers.com,9000303030,Monthly,4.1,Silver,7,0.04,8700,116,Air,88,80,Medium,Active
