@@ -18,30 +18,42 @@ from sklearn.linear_model import LogisticRegression
 # -----------------------------
 df = pd.read_csv("dataset/orders.csv")
 
-# Target column (convert to binary)
-# Delayed = 1, OnTime = 0
+# Target column (Delayed = 1, OnTime = 0)
 df["target"] = df["order_status"].apply(lambda x: 1 if x == "Delayed" else 0)
 
 # -----------------------------
-# 2) Select Features
+# 2) Create Supplier History Features (VERY IMPORTANT)
+# -----------------------------
+supplier_stats = df.groupby("supplier_id").agg(
+    supplier_avg_delay_days=("delay_days", "mean"),
+    supplier_avg_defect_rate=("defect_rate", "mean"),
+    supplier_on_time_rate=("order_status", lambda x: (x == "OnTime").mean())
+).reset_index()
+
+# Merge supplier history back into orders
+df = df.merge(supplier_stats, on="supplier_id", how="left")
+
+# -----------------------------
+# 3) Select Features (NO delay_days used)
 # -----------------------------
 features = [
     "quantity",
     "unit_price",
     "defect_rate",
-    "delay_days",  # keep for now (later we improve further)
     "item_category",
     "shipping_mode",
     "payment_terms",
     "order_priority",
     "region",
-    "price_change_percent"
+    "price_change_percent",
+    "supplier_avg_delay_days",
+    "supplier_avg_defect_rate",
+    "supplier_on_time_rate"
 ]
 
 X = df[features]
 y = df["target"]
 
-# Identify categorical and numeric columns
 categorical_cols = ["item_category", "shipping_mode", "payment_terms", "order_priority", "region"]
 numeric_cols = [col for col in features if col not in categorical_cols]
 
@@ -54,14 +66,14 @@ preprocessor = ColumnTransformer(
 )
 
 # -----------------------------
-# 3) Train-Test Split
+# 4) Train-Test Split
 # -----------------------------
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42, stratify=y
 )
 
 # -----------------------------
-# 4) Models to compare
+# 5) Models to compare
 # -----------------------------
 models = {
     "LogisticRegression": LogisticRegression(max_iter=2000),
@@ -69,13 +81,12 @@ models = {
 }
 
 results = []
-
 best_model_name = None
 best_f1 = -1
 best_pipeline = None
 
 # -----------------------------
-# 5) Train + Evaluate each model
+# 6) Train + Evaluate
 # -----------------------------
 for name, model in models.items():
     pipeline = Pipeline(steps=[
@@ -105,19 +116,15 @@ for name, model in models.items():
         best_pipeline = pipeline
 
 # -----------------------------
-# 6) Save report
+# 7) Save report + best model
 # -----------------------------
 os.makedirs("reports", exist_ok=True)
 results_df = pd.DataFrame(results).sort_values("f1_score", ascending=False)
 results_df.to_csv("reports/model_comparison.csv", index=False)
 
-print("\n✅ Model Comparison Report Saved: reports/model_comparison.csv")
-print(results_df)
-
-# -----------------------------
-# 7) Save best model
-# -----------------------------
 os.makedirs("models", exist_ok=True)
 joblib.dump(best_pipeline, "models/model.pkl")
 
+print("\n✅ Model Comparison Report Saved: reports/model_comparison.csv")
+print(results_df)
 print(f"\n🏆 Best Model Saved: {best_model_name} → models/model.pkl")
