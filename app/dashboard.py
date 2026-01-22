@@ -20,7 +20,6 @@ risk_report = pd.read_csv("dataset/supplier_risk_report.csv")
 
 # Load trained model
 model = joblib.load("models/model.pkl")
-
 # -------------------- SECTION 1: DATA PREVIEW --------------------
 st.subheader("📄 Orders Dataset Preview")
 st.dataframe(df.head(15))
@@ -42,6 +41,10 @@ with col2:
     st.write("📌 Average Delay Days per Supplier")
     avg_delay = df.groupby("supplier_id")["delay_days"].mean()
     st.bar_chart(avg_delay)
+
+st.subheader("📌 Model Performance Comparison")
+model_report = pd.read_csv("reports/model_comparison.csv")
+st.dataframe(model_report)
 
 # -------------------- SECTION 4: PREDICTION MODULE --------------------
 st.subheader("🤖 Predict Delay for a New Order")

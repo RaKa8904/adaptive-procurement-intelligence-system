@@ -1,0 +1,3 @@
+model,accuracy,precision,recall,f1_score
+RandomForest,1.0,1.0,1.0,1.0
+LogisticRegression,0.975,1.0,0.95,0.9744
