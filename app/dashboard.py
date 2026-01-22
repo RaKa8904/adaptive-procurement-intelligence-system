@@ -28,7 +28,15 @@ st.dataframe(df.head(15))
 st.subheader("⚠ Supplier Risk Ranking (Higher = More Risk)")
 st.dataframe(risk_report)
 
-# -------------------- SECTION 3: BASIC ANALYTICS --------------------
+# -------------------- SECTION 3: Supplier Segmentation MODULE --------------------
+st.subheader("🧩 Supplier Segmentation (Clustering)")
+
+clusters = pd.read_csv("dataset/supplier_clusters.csv")
+st.dataframe(clusters)
+
+st.info("Suppliers are automatically grouped into Reliable / Moderate / Risky segments using K-Means clustering.")
+
+# -------------------- SECTION 4: BASIC ANALYTICS --------------------
 st.subheader("📊 Procurement Analytics")
 
 col1, col2 = st.columns(2)
@@ -42,7 +50,7 @@ with col2:
     avg_delay = df.groupby("supplier_id")["delay_days"].mean()
     st.bar_chart(avg_delay)
 
-# -------------------- SECTION 4: Anomaly_Detection MODULE --------------------
+# -------------------- SECTION 5: Anomaly_Detection MODULE --------------------
 st.subheader("🚨 Anomaly Alerts (Unusual Orders)")
 anomaly_report = pd.read_csv("dataset/anomaly_report.csv")
 
@@ -56,7 +64,15 @@ st.subheader("📌 Model Performance Comparison")
 model_report = pd.read_csv("reports/model_comparison.csv")
 st.dataframe(model_report)
 
-# -------------------- SECTION 5: PREDICTION MODULE --------------------
+# -------------------- SECTION 6: Supplier Segmentation MODULE --------------------
+st.subheader("🧩 Supplier Segmentation (Clustering)")
+
+clusters = pd.read_csv("dataset/supplier_clusters.csv")
+st.dataframe(clusters)
+
+st.info("Suppliers are automatically grouped into Reliable / Moderate / Risky segments using K-Means clustering.")
+
+# -------------------- SECTION 7: PREDICTION MODULE --------------------
 st.subheader("🤖 Predict Delay for a New Order (Using Supplier History)")
 
 # Load orders dataset to compute supplier history
