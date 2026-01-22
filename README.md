@@ -140,3 +140,13 @@ This project uses a **custom synthetic procurement dataset** (`orders.csv`) cont
 git clone https://github.com/RaKa8904/adaptive-procurement-intelligence-system.git
 cd adaptive-procurement-intelligence-system
 ```
+
+## 🚀 New Upgrades (Phase 2)
+
+### ✅ Model Performance Comparison (Logistic Regression vs Random Forest)
+
+![Model Comparison](screenshots/phase2_model_comparison.png)
+
+### ✅ Delay Prediction Using Supplier History (Realistic Prediction)
+
+![Prediction](screenshots/phase2_prediction.png)
