@@ -10,6 +10,62 @@ st.write("This dashboard shows supplier performance, risk scoring and delay pred
 # Load dataset
 df = pd.read_csv("dataset/orders.csv")
 
+# ✅ Creating risk_score(for Alerts Panel)
+if "risk_score" not in df.columns:
+    priority_weight = {"Low": 5, "Medium": 10, "High": 20}
+    df["priority_weight"] = df["order_priority"].map(priority_weight).fillna(10)
+
+    df["risk_score"] = (
+        (df["delay_days"] * 18) +
+        (df["defect_rate"] * 100 * 2.5) +
+        (df["price_change_percent"].abs() * 1.2) +
+        (df["priority_weight"] * 0.6)
+    ).clip(0, 100)
+
+#alerts panel
+st.subheader("🚨 Alerts Panel (Procurement Monitoring)")
+
+# Basic alerts from orders dataset
+high_risk_orders = df[df["risk_score"] >= 70]
+high_defect_orders = df[df["defect_rate"] >= 0.06]
+price_spike_orders = df[df["price_change_percent"].abs() >= 10]
+delayed_orders = df[df["order_status"] == "Delayed"]
+
+col1, col2, col3, col4 = st.columns(4)
+
+with col1:
+    st.metric("High Risk Orders", len(high_risk_orders))
+with col2:
+    st.metric("High Defect Orders", len(high_defect_orders))
+with col3:
+    st.metric("Price Spike Orders", len(price_spike_orders))
+with col4:
+    st.metric("Delayed Orders", len(delayed_orders))
+
+# Show details
+with st.expander("🔍 View Alert Details"):
+    st.write("🚨 High Risk Orders (risk_score >= 70)")
+    st.dataframe(high_risk_orders.head(15))
+
+    st.write("⚠️ High Defect Orders (defect_rate >= 0.06)")
+    st.dataframe(high_defect_orders.head(15))
+
+    st.write("📈 Price Spike Orders (|price_change_percent| >= 10)")
+    st.dataframe(price_spike_orders.head(15))
+
+    st.write("⏳ Delayed Orders")
+    st.dataframe(delayed_orders.head(15))
+
+# Recommended Suppliers
+st.subheader("🏆 Recommended Suppliers (Top 3)")
+
+risk_report = pd.read_csv("dataset/supplier_risk_report.csv")
+
+top_suppliers = risk_report.sort_values("risk_score", ascending=True).head(3)
+
+st.success("These suppliers have the lowest risk score (recommended for new orders).")
+st.dataframe(top_suppliers)
+
 # Supplier Master Data
 suppliers = pd.read_csv("dataset/suppliers.csv")
 st.subheader("🏢 Supplier Master Data")
@@ -71,6 +127,39 @@ clusters = pd.read_csv("dataset/supplier_clusters.csv")
 st.dataframe(clusters)
 
 st.info("Suppliers are automatically grouped into Reliable / Moderate / Risky segments using K-Means clustering.")
+
+# -------------------- SECTION 7: Download Buttons MODULE --------------------
+st.subheader("📥 Download Reports")
+# Supplier Risk Report Download
+with open("dataset/supplier_risk_report.csv", "rb") as f:
+    st.download_button(
+        label="⬇️ Download Supplier Risk Report",
+        data=f,
+        file_name="supplier_risk_report.csv",
+        mime="text/csv"
+    )
+# Anomaly Report Download (if exists)
+try:
+    with open("dataset/anomaly_report.csv", "rb") as f:
+        st.download_button(
+            label="⬇️ Download Anomaly Report",
+            data=f,
+            file_name="anomaly_report.csv",
+            mime="text/csv"
+        )
+except:
+    st.info("Anomaly report not found (run Phase 3 script if needed).")
+# Supplier Clusters Download (if exists)
+try:
+    with open("dataset/supplier_clusters.csv", "rb") as f:
+        st.download_button(
+            label="⬇️ Download Supplier Clustering Report",
+            data=f,
+            file_name="supplier_clusters.csv",
+            mime="text/csv"
+        )
+except:
+    st.info("Supplier clustering report not found (run Phase 4 script if needed).")
 
 # -------------------- SECTION 7: PREDICTION MODULE --------------------
 st.subheader("🤖 Predict Delay for a New Order (Using Supplier History)")
