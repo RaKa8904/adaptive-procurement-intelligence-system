@@ -1,0 +1,2 @@
+generated_at,total_orders,delayed_orders,ontime_orders,on_time_rate_percent,avg_delay_days,avg_defect_rate,avg_price_change_percent,total_suppliers,anomaly_records,top_3_risky_suppliers,top_3_recommended_suppliers,cluster_breakdown
+2026-01-23 22:30:55,200,100,100,50.0,0.8,0.035,5.5,10,16,"S09, S05, S03","S04, S08, S06","{'Reliable ✅': 4, 'Moderate ⚠️': 3, 'Risky 🚨': 3}"

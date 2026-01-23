@@ -182,6 +182,23 @@ try:
 except:
     st.info("Supplier clustering report not found (run Phase 4 script if needed).")
 
+# Final Procurement Summary Report Download
+    st.subheader("📄 Final Procurement Summary Report")
+
+try:
+    final_summary = pd.read_csv("reports/final_procurement_summary.csv")
+    st.dataframe(final_summary)
+
+    with open("reports/final_procurement_summary.csv", "rb") as f:
+        st.download_button(
+            label="⬇️ Download Final Procurement Summary",
+            data=f,
+            file_name="final_procurement_summary.csv",
+            mime="text/csv"
+        )
+except:
+    st.info("Final report not found. Run: python src/generate_final_report.py")
+
 # -------------------- SECTION 7: PREDICTION MODULE --------------------
 st.subheader("🤖 Predict Delay for a New Order (Using Supplier History)")
 
