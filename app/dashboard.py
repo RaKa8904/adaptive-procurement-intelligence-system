@@ -10,6 +10,27 @@ st.write("This dashboard shows supplier performance, risk scoring and delay pred
 # Load dataset
 df = pd.read_csv("dataset/orders.csv")
 
+#retrain model section
+st.subheader("🔁 Adaptive Learning (Retrain Model)")
+
+if st.button("🚀 Retrain Model Now"):
+    with st.spinner("Training models... please wait ⏳"):
+        import subprocess
+        subprocess.run(["python", "src/retrain_model.py"], check=True)
+
+    st.success("✅ Model retrained successfully! Refreshing dashboard...")
+
+    st.rerun()
+
+# Training logs section
+st.subheader("📊 Training Logs")
+
+try:
+    training_logs = pd.read_csv("logs/training_log.csv")
+    st.dataframe(training_logs.tail(10))
+except:
+    st.info("No training logs found yet. Click 'Retrain Model Now' to generate logs.")
+
 # ✅ Creating risk_score(for Alerts Panel)
 if "risk_score" not in df.columns:
     priority_weight = {"Low": 5, "Medium": 10, "High": 20}
