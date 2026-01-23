@@ -149,4 +149,4 @@ cd adaptive-procurement-intelligence-system
 
 ### ✅ Delay Prediction Using Supplier History (Realistic Prediction)
 
-![Prediction](screenshots/phase2_prediction.png.png)
+![Prediction](screenshots/phase2_prediction.png2.png)
