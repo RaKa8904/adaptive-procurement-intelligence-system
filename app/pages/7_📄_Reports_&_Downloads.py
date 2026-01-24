@@ -4,6 +4,7 @@ from datetime import datetime
 import io
 import zipfile
 import pandas as pd
+import subprocess
 from utils import load_orders, load_suppliers, load_risk_report, load_clusters, load_anomalies
 from app.theme import apply_dark_theme
 
@@ -196,13 +197,19 @@ with col2:
     """)
     
     email_address = st.text_input("Email address", placeholder="your@email.com")
-    frequency = st.selectbox("Frequency", ["Daily", "Weekly", "Monthly"])
     
-    if st.button("📨 Subscribe", use_container_width=True):
-        if email_address:
-            st.success(f"✅ Subscription confirmed for {email_address} ({frequency})")
-        else:
-            st.error("Please enter a valid email address")
+    if st.button("📨 Send Report Now", use_container_width=True):
+     if email_address:
+        try:
+            subprocess.run(
+                ["python", "src/send_email_report.py", email_address],
+                check=True
+            )
+            st.success(f"✅ Report sent successfully to {email_address}")
+        except Exception as e:
+            st.error(f"❌ Failed to send email: {e}")
+    else:
+        st.error("Please enter a valid email address")
 
 # Data Dictionary Section
 st.markdown(f"<div class='section-header'>📚 Data Dictionary</div>", unsafe_allow_html=True)
@@ -274,3 +281,7 @@ st.markdown("""
     <p>For support, contact: support@apis.example.com</p>
 </div>
 """.format(datetime.now().strftime("%Y-%m-%d %H:%M:%S")), unsafe_allow_html=True)
+
+
+#$env:SMTP_USER="rakaotaku8904@gmail.com"
+#$env:SMTP_PASS="qycu mjgl negy nopt"

@@ -86,7 +86,7 @@ def train_and_save_model():
 
         results.append({
             "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "model": name,
+            "model_name": name,
             "accuracy": round(acc, 4),
             "precision": round(prec, 4),
             "recall": round(rec, 4),
