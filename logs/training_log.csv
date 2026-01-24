@@ -1,0 +1,3 @@
+timestamp,model_name,accuracy,precision,recall,f1_score
+2026-01-25 00:39:27,LogisticRegression,0.975,1.0,0.95,0.9744
+2026-01-25 00:39:27,RandomForest,0.975,1.0,0.95,0.9744

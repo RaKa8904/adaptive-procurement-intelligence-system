@@ -1,0 +1,17 @@
+order_id,supplier_id,order_date,expected_delivery_date,actual_delivery_date,quantity,unit_price,defect_rate,delay_days,order_status,item_category,shipping_mode,payment_terms,order_priority,region,price_change_percent,anomaly_flag,anomaly_score
+O182,S02,2026-03-01,2026-03-06,2026-03-07,90,120,0.03,1,Delayed,Electrical,Air,Net30,Medium,East,14.37,1,-0.0517
+O199,S09,2026-03-18,2026-03-23,2026-03-25,215,109,0.07,2,Delayed,Electronics,Sea,Net45,Low,South,14.21,1,-0.0447
+O009,S09,2025-09-09,2025-09-14,2025-09-16,160,90,0.07,2,Delayed,Electronics,Air,Net45,Medium,West,3.73,1,-0.0399
+O195,S05,2026-03-14,2026-03-19,2026-03-21,295,107,0.06,2,Delayed,Electrical,Rail,Net45,Low,North,9.92,1,-0.0378
+O189,S09,2026-03-08,2026-03-13,2026-03-15,210,108,0.07,2,Delayed,Electronics,Rail,Net30,High,North,14.19,1,-0.0222
+O071,S01,2025-11-10,2025-11-15,2025-11-16,134,98,0.02,1,Delayed,Chemicals,Sea,Net60,High,North,14.63,1,-0.0149
+O162,S02,2026-02-09,2026-02-14,2026-02-15,89,118,0.03,1,Delayed,Mechanical,Road,Net45,Low,West,12.86,1,-0.0133
+O185,S05,2026-03-04,2026-03-09,2026-03-11,290,106,0.06,2,Delayed,Electrical,Rail,Net60,Low,North,9.07,1,-0.0128
+O004,S04,2025-09-04,2025-09-09,2025-09-09,60,110,0.01,0,OnTime,Packaging,Road,Net30,Low,North,6.39,1,-0.0115
+O197,S07,2026-03-16,2026-03-21,2026-03-22,188,113,0.04,1,Delayed,Mechanical,Road,Net30,Medium,South,8.09,1,-0.0086
+O165,S05,2026-02-12,2026-02-17,2026-02-19,280,104,0.06,2,Delayed,Electrical,Sea,Net30,Low,South,4.53,1,-0.0074
+O175,S05,2026-02-22,2026-02-27,2026-03-01,285,105,0.06,2,Delayed,Electronics,Rail,Net60,High,East,6.02,1,-0.0072
+O005,S05,2025-09-05,2025-09-10,2025-09-12,200,88,0.06,2,Delayed,Packaging,Sea,Net45,Medium,East,10.53,1,-0.0063
+O167,S07,2026-02-14,2026-02-19,2026-02-20,180,110,0.04,1,Delayed,Chemicals,Sea,Net60,Medium,West,12.57,1,-0.0036
+O003,S03,2025-09-03,2025-09-08,2025-09-10,150,92,0.05,2,Delayed,Electronics,Sea,Net30,Medium,West,3.47,1,-0.0021
+O196,S06,2026-03-15,2026-03-20,2026-03-20,106,134,0.02,0,OnTime,Electronics,Sea,Net45,Low,West,5.32,1,-0.0003
