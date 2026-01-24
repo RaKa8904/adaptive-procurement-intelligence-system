@@ -1,152 +1,401 @@
-# Adaptive Procurement Intelligence System (APIS) 🚀
+🚀 Adaptive Procurement Intelligence System (APIS)
 
-An **AI-powered procurement intelligence system** that helps organizations monitor supplier performance, calculate supplier risk scores, and predict delivery delays using **Machine Learning**.  
-This project provides a complete working prototype with a **risk scoring module**, **ML-based prediction model**, and an **interactive Streamlit dashboard** for procurement analytics.
+An AI-powered procurement intelligence platform that helps organizations monitor procurement performance, evaluate supplier reliability, detect anomalies, and predict delivery delays using Machine Learning + Analytics.
 
----
+APIS is built as a multi-page Streamlit dashboard with automated risk scoring, supplier segmentation, anomaly detection, reporting, and model retraining.
 
-## 📌 Problem Statement
+📌 Problem Statement
 
-In real-world procurement, organizations face challenges like:
+In real-world procurement operations, organizations face challenges such as:
 
-- Late deliveries from suppliers
-- Rising defect rates in received goods
-- Difficulty in identifying risky suppliers early
-- Manual monitoring of procurement performance
-- Lack of real-time supplier ranking and decision support
+Late deliveries impacting production timelines
 
-Traditional procurement systems are mostly reactive.  
-**APIS solves this by using AI/ML to predict risks proactively** and support procurement teams with insights and recommendations.
+Quality issues (high defect rates) increasing costs
 
----
+Price fluctuations affecting budgeting
 
-## 🎯 Project Objectives
+Difficulty identifying risky suppliers early
 
-✔ Track supplier performance using procurement order data  
-✔ Calculate supplier **risk score (0–100)** based on delivery and quality metrics  
-✔ Predict whether a new order is likely to be **OnTime / Delayed**  
-✔ Provide dashboards for procurement analytics and supplier ranking  
-✔ Build a scalable foundation that can be upgraded to enterprise-level systems
+Manual monitoring & lack of intelligent decision support
 
----
+Traditional procurement systems are reactive.
+✅ APIS makes procurement proactive using AI-driven risk intelligence.
 
-## ✨ Key Features
+🎯 Project Objectives
 
-### ✅ Supplier Risk Scoring
+✔ Monitor procurement order performance in real-time
+✔ Score supplier risk from delivery + quality + pricing patterns
+✔ Predict order delay probability using supplier history + order parameters
+✔ Detect anomalies/outliers automatically (risk, defects, price spikes)
+✔ Segment suppliers into reliability groups using clustering
+✔ Provide downloadable reports & analytics dashboards
+✔ Support adaptive learning through model retraining & training logs
 
-- Generates risk score using delay + defect patterns
-- Higher score = higher procurement risk
+✨ Final Phase Upgrades (All-in-One)
 
-### ✅ Supplier Risk Ranking Report
+This final version of APIS includes the following major upgrades:
 
-- Ranks suppliers based on average risk score
-- Generates a report file: `supplier_risk_report.csv`
+✅ 1) Multi-Page Streamlit Dashboard (Full Navigation)
 
-### ✅ Machine Learning Delay Prediction
+APIS is now a complete dashboard suite, not just a single page.
 
-- Trains an ML model to classify delivery outcome:
-  - `OnTime`
-  - `Delayed`
+Modules included:
 
-### ✅ Interactive Dashboard (Streamlit)
+🏠 Main Dashboard Home
 
-- Dataset preview
-- Supplier risk ranking table
-- Graphs (Order status distribution, avg delay per supplier)
-- Prediction form for new orders
+📊 Overview Analytics
 
----
+📦 Orders Explorer
 
-## 🏗️ System Workflow / Architecture
+🏢 Supplier Intelligence
 
-**1. Data Collection (CSV Dataset)**  
-⬇  
-**2. Data Preprocessing & Feature Selection**  
-⬇  
-**3. ML Model Training (RandomForestClassifier)**  
-⬇  
-**4. Risk Score Calculation + Supplier Ranking**  
-⬇  
-**5. Streamlit Dashboard for Visualization + Prediction**
+🧩 Supplier Segmentation (Clustering)
 
----
+🚨 Alerts & Anomalies
 
-## 🧰 Tech Stack
+🤖 Delay Predictor (ML)
 
-### 🖥️ Frontend / UI
+📄 Reports & Downloads
 
-- **Streamlit** (Dashboard UI)
+🔁 Retrain & Logs
 
-### ⚙️ Backend / ML Engine
+Dashboard entry page: \_🏠_Dashboard.py
 
-- **Python**
-- **Pandas / NumPy**
-- **Scikit-learn**
-- **Joblib**
+\_🏠_Dashboard
 
-### 🗄️ Database / Storage
+✅ 2) Modern Dark Mode UI Theme (Professional Look)
 
-- CSV-based storage (`orders.csv`)
-- (Upgradeable to SQLite / PostgreSQL)
+A custom dark theme UI is applied across all pages for:
 
----
+Better readability
 
-## 📂 Project Structure
+High contrast text
+
+Consistent UI styling
+
+Modern enterprise dashboard feel
+
+Theme is applied using: apply_dark_theme() from theme.py
+
+theme
+
+✅ 3) Supplier Risk Scoring + Ranking System
+
+Suppliers are evaluated using risk scores and categorized into:
+
+🟢 Low Risk
+
+🟠 Medium Risk
+
+🔴 High Risk
+
+The Suppliers module shows:
+
+risk distribution
+
+risk ranking table
+
+progress-style risk bars
+
+Supplier page: 3_🏢_Suppliers.py
+
+3_🏢_Suppliers
+
+✅ 4) Orders Explorer with Advanced Filtering
+
+A full orders explorer is added to filter and analyze orders by:
+
+supplier
+
+order status (OnTime / Delayed)
+
+priority (Low / Medium / High)
+
+sorting by delay, defect rate, quantity, price
+
+Orders Explorer page: 2_📦_Orders_Explorer.py
+
+2_📦_Orders_Explorer
+
+✅ 5) Supplier Segmentation using K-Means Clustering
+
+Suppliers are segmented into strategic categories:
+
+🟢 Reliable
+
+🟠 Moderate
+
+🔴 Risky
+
+This helps procurement teams with:
+
+supplier strategy planning
+
+vendor relationship management
+
+risk mitigation
+
+Clustering page: 4_🧩_Supplier Segmentation.py
+
+4_🧩_Supplier Segmentation
+
+✅ 6) Alerts & Anomaly Detection Dashboard
+
+APIS detects anomalies like:
+
+🚨 High Risk Orders (risk score ≥ 70)
+
+⚠️ Quality issues (defect rate ≥ 6%)
+
+📈 Price spikes (±10% change)
+
+⏳ Delivery delays
+
+Alerts module: 5*🚨_Alerts*&\_Anomalies.py
+
+5*🚨_Alerts*&\_Anomalies
+
+Isolation Forest anomaly engine: anomaly_detection.py
+
+anomaly_detection
+
+✅ 7) ML Delay Prediction (Supplier History Based)
+
+Delay prediction is upgraded to be more realistic using supplier historical performance:
+
+supplier_avg_delay_days
+
+supplier_avg_defect_rate
+
+supplier_on_time_rate
+
+User selects a supplier and enters order details → model predicts:
+
+✅ On-Time
+🚨 Delayed
+
+Delay predictor UI: 6_🤖_Delay_Predictor.py
+
+6_🤖_Delay_Predictor
+
+✅ 8) Model Retraining + Best Model Selection (LR vs RF)
+
+APIS supports adaptive learning through retraining:
+
+Trains both Logistic Regression & Random Forest
+
+Selects best model using F1-score
+
+Saves best model to models/model.pkl
+
+Stores training logs to logs/training_log.csv
+
+Generates reports/model_comparison.csv
+
+Retraining engine: retrain_model.py
+
+retrain_model
+
+Retrain dashboard page: 8*🔁_Retrain*&\_Logs.py
+
+8*🔁_Retrain*&\_Logs
+
+✅ 9) Reports & Bulk Export Downloads (ZIP Support)
+
+A dedicated Reports Center allows users to download:
+
+Supplier Risk Report
+
+Anomaly Detection Report
+
+Supplier Clustering Report
+
+Procurement Summary
+
+It also supports bulk export ZIP containing all CSVs.
+
+Reports page: 7*📄_Reports*&\_Downloads.py
+
+7*📄_Reports*&\_Downloads
+
+🏗️ System Workflow / Architecture
+
+1. Order Data Collection (CSV dataset)
+   ⬇
+2. Risk Score Calculation + Supplier Ranking
+   ⬇
+3. Supplier Clustering (Segmentation)
+   ⬇
+4. Anomaly Detection (Isolation Forest)
+   ⬇
+5. ML Delay Prediction (Supplier + Order Features)
+   ⬇
+6. Dashboard Visualization + Reports Export
+   ⬇
+7. Retraining & Logs (Adaptive Learning)
+
+🧰 Tech Stack
+🖥️ Frontend / UI
+
+Streamlit (Multi-page dashboard)
+
+⚙️ Backend / Analytics / ML
+
+Python
+
+Pandas / NumPy
+
+Scikit-learn
+
+Joblib
+
+📦 Models Used
+
+RandomForestClassifier
+
+LogisticRegression
+
+IsolationForest
+
+K-Means (for clustering report)
+
+📂 Project Structure
 
 adaptive-procurement-intelligence-system/
 │
 ├── app/
-│ └── dashboard.py
+│ ├── theme.py
+│ ├── utils.py
+│ ├── *🏠_Dashboard.py
+│ └── pages/
+│ ├── 1*📊*Overview.py
+│ ├── 2*📦*Orders_Explorer.py
+│ ├── 3*🏢*Suppliers.py
+│ ├── 4*🧩*Supplier Segmentation.py
+│ ├── 5*🚨*Alerts*&*Anomalies.py
+│ ├── 6*🤖*Delay_Predictor.py
+│ ├── 7*📄*Reports*&*Downloads.py
+│ └── 8*🔁*Retrain*&\_Logs.py
 │
 ├── dataset/
 │ ├── orders.csv
-│ └── supplier_risk_report.csv
+│ ├── suppliers.csv
+│ ├── supplier_risk_report.csv
+│ ├── supplier_clusters.csv
+│ └── anomaly_report.csv
 │
 ├── models/
 │ └── model.pkl
 │
 ├── src/
-│ ├── model_training.py
+│ ├── retrain_model.py
+│ ├── anomaly_detection.py
 │ └── risk_score.py
 │
+├── reports/
+│ └── model_comparison.csv
+│
+├── logs/
+│ └── training_log.csv
+│
 ├── requirements.txt
-├── .gitignore
 └── README.md
 
-## 📊 Dataset Details
+📊 Dataset Details
 
-This project uses a **custom synthetic procurement dataset** (`orders.csv`) containing 200 order records.
+This project uses procurement order records containing supplier and order performance information.
 
-### Dataset Columns:
+Common dataset columns include:
 
-- `order_id`
-- `supplier_id`
-- `order_date`
-- `expected_delivery_date`
-- `actual_delivery_date`
-- `quantity`
-- `unit_price`
-- `defect_rate`
-- `delay_days`
-- `order_status`
+order_id
 
----
+supplier_id
 
-## ⚙️ Installation & Setup
+quantity
 
-### ✅ 1) Clone the Repository
+unit_price
 
-```bash
+defect_rate
+
+delay_days
+
+order_status (OnTime / Delayed)
+
+order_priority
+
+region
+
+price_change_percent
+
+shipping_mode
+
+payment_terms
+
+item_category
+
+⚙️ Installation & Setup
+✅ 1) Clone the Repository
 git clone https://github.com/RaKa8904/adaptive-procurement-intelligence-system.git
 cd adaptive-procurement-intelligence-system
-```
 
-## 🚀 New Upgrades (Phase 2)
+✅ 2) Install Dependencies
+pip install -r requirements.txt
 
-### ✅ Model Performance Comparison (Logistic Regression vs Random Forest)
+✅ 3) Run the Dashboard
+streamlit run \_🏠_Dashboard.py
 
-![Model Comparison](screenshots/phase2_model_comparison.png)
+🚀 How to Use the Dashboard
 
-### ✅ Delay Prediction Using Supplier History (Realistic Prediction)
+Once the dashboard is running:
 
-![Prediction](screenshots/phase2_prediction.png2.png)
+🏠 Dashboard Home
+
+Shows quick system status, alerts, trends, and top risky suppliers.
+
+KPIs + order distribution + priority breakdown.
+
+📦 Orders Explorer
+
+Filter orders and view performance metrics.
+
+🏢 Suppliers
+
+Supplier master data + risk ranking + risk distribution.
+
+🧩 Supplier Segmentation
+
+Cluster suppliers into reliable/moderate/risky groups.
+
+🚨 Alerts & Anomalies
+
+Detect risky orders, quality issues, price spikes, delays.
+
+🤖 Delay Predictor
+
+Predict whether a new order will be delayed using ML.
+
+📄 Reports & Downloads
+
+Download CSV reports + bulk ZIP export.
+
+🔁 Retrain & Logs
+
+Retrain ML models and monitor training logs.
+
+📌 Future Scope (Optional Enhancements)
+
+Add PostgreSQL/SQL database integration
+
+Role-based authentication (Admin / Analyst)
+
+Real-time supplier alerts via Email/SMS
+
+PowerBI/Tableau connector exports
+
+Explainable AI (SHAP) for prediction reasoning
+
+Deployment on Streamlit Cloud / AWS / Azure
+
+👨‍💻 Author
+
+Built by Raka 💙
